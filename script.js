@@ -1,31 +1,31 @@
-// your code here
 
- const form = document.getElementById("myForm");
-        const urlElement = document.getElementById("url");
+document.addEventListener("DOMContentLoaded", () => {
 
-        form.addEventListener("submit", function(e) {
-            e.preventDefault(); // Stop page reload
+    const form = document.getElementById("myForm");
+    const urlElement = document.getElementById("url");
 
-            const name = document.getElementById("name").value.trim();
-            const year = document.getElementById("year").value.trim();
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-            let baseURL = "https://localhost:8080/";
+        const name = document.getElementById("name").value.trim();
+        const year = document.getElementById("year").value.trim();
 
-            // Build query string
-            let params = [];
+        let baseURL = "https://localhost:8080/";
+        let params = [];
 
-            if (name !== "") {
-                params.push(`name=${encodeURIComponent(name)}`);
-            }
+        if (name !== "") {
+            params.push(`name=${encodeURIComponent(name)}`);
+        }
 
-            if (year !== "") {
-                params.push(`year=${encodeURIComponent(year)}`);
-            }
+        if (year !== "") {
+            params.push(`year=${encodeURIComponent(year)}`);
+        }
 
-            // If we have parameters, join them
-            if (params.length > 0) {
-                baseURL += "?" + params.join("&");
-            }
+        if (params.length > 0) {
+            baseURL += "?" + params.join("&");
+        }
 
-            urlElement.textContent = baseURL;
-        });
+        urlElement.textContent = baseURL;
+    });
+
+});
